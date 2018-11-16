@@ -26,10 +26,11 @@ public class PlayerMovement : MonoBehaviour {
         canvas.SetActive(false);
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+   
+    private void OnTriggerStay2D(Collider2D col)
     {
         
-        if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false)
+        if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
         {
             canvas.SetActive(true);
             Timer += Time.deltaTime;
@@ -41,9 +42,15 @@ public class PlayerMovement : MonoBehaviour {
                 canvas.SetActive(false);
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            Timer = 0;
+            canvas.SetActive(false);
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Timer = 0;
         canvas.SetActive(false);
@@ -78,16 +85,9 @@ public class PlayerMovement : MonoBehaviour {
 		{
             transform.position += Vector3.down * speed * Time.deltaTime;
             currentDir = faceDirection.Down;
-			
-			
-			
+				
 		}
 		
-		if (Input.GetKey(KeyCode.Space)) // boost
-		{
-			// tutaj bedzie uzywanie boosta
-		}
-
 	}
 
     
