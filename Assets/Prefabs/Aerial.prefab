@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1821031012262638}
+  m_RootGameObject: {fileID: 1682688146951744}
   m_IsPrefabAsset: 1
---- !u!1 &1821031012262638
+--- !u!1 &1682688146951744
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4751373653346246}
-  - component: {fileID: 114087561014605200}
-  - component: {fileID: 61153041744932298}
+  - component: {fileID: 4633357659082022}
+  - component: {fileID: 114165997498287124}
+  - component: {fileID: 61965013678779666}
   m_Layer: 0
   m_Name: Aerial
   m_TagString: Aerial
@@ -28,12 +28,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4751373653346246
+--- !u!4 &4633357659082022
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821031012262638}
+  m_GameObject: {fileID: 1682688146951744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61153041744932298
+--- !u!61 &61965013678779666
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821031012262638}
+  m_GameObject: {fileID: 1682688146951744}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,12 +66,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114087561014605200
+--- !u!114 &114165997498287124
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821031012262638}
+  m_GameObject: {fileID: 1682688146951744}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d0abe325f0220d41b8cd3e2663eee11, type: 3}
