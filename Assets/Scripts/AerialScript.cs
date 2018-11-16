@@ -7,12 +7,6 @@ public class AerialScript : MonoBehaviour {
     public bool AssembleState;
     // Use this for initialization
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube(this.transform.position, new Vector3(1, 1, 1));
-    }
-
     void Start () {
         AssembleState = false;
 	}
