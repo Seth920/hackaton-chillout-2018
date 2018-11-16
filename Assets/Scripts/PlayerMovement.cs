@@ -1,38 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
     public float speed = 1;
 	public enum faceDirection { Up, Down, Left, Right}
 	public faceDirection currentDir = faceDirection.Up;
+    public float Timer = 0f;
+    public float AssemblyTimer = 3f;
+
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(this.transform.position,new Vector3(1,1,1));
     }
-    
-   
-    private void OnCollisionEnter2D(Collision2D col)
+
+    [Header("UI")]
+    public Image Bar;
+    public GameObject canvas;
+
+    private void Start()
     {
+        canvas.SetActive(false);
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        
         if (col.gameObject.tag == "Aerial")
         {
-            col.gameObject.GetComponent<AerialScript>().AssembleState = true;
-
+            canvas.SetActive(true);
+            Timer += Time.deltaTime;
+            Bar.fillAmount = Timer / AssemblyTimer;
+            
+            if (Timer >= AssemblyTimer)
+            {
+                col.gameObject.GetComponent<AerialScript>().AssembleState = true;
+            }
         }
-    }  
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Timer = 0;
+        canvas.SetActive(false);
+    }
 
     void Update ()
 	{
+        
+
 		if (Input.GetKey(KeyCode.A)) // left
 		{
 
             transform.position += Vector3.left * speed * Time.deltaTime;
             currentDir = faceDirection.Left;
-           
-
-
         }
 		if (Input.GetKey(KeyCode.D)) // right
 		{
@@ -57,15 +81,14 @@ public class PlayerMovement : MonoBehaviour {
 			
 			
 		}
-		if (Input.GetKey(KeyCode.KeypadEnter)) // assemble
-		{
-            
-            
-		}
+		
 		if (Input.GetKey(KeyCode.Space)) // boost
 		{
 			// tutaj bedzie uzywanie boosta
 		}
 
 	}
+
+    
+
 }
