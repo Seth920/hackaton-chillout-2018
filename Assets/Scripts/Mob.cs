@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class Mob: MonoBehaviour {
 
-    public List<GameObject> waypoints;
+    public float speed;
+    public GameObject waypointsParent;
     IState mobState;
 
-    void Start() {
-        this.mobState = new MobPatrolingState(this.waypoints);
+    void Awake() {
+        var waypoints = this.getWaypoints();
+        this.mobState = new MobPatrolingState(transform, waypoints, speed);
     }
 
     void Update() {
@@ -23,5 +25,15 @@ public class Mob: MonoBehaviour {
         if (stateAfterFrame.GetType() == this.mobState.GetType()) {
             return;
         }
+    }
+
+    private List<GameObject> getWaypoints() {
+        var waypointsList = new List<GameObject>();
+        int childCount = waypointsParent.transform.childCount;
+        for (int i = 0; i < childCount; i++) {
+            waypointsList.Add(this.waypointsParent.transform.GetChild(i).gameObject);
+        }
+
+        return waypointsList;
     }
 }
