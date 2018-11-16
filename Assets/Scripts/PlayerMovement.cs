@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D col)
     {
         
-        if (col.gameObject.tag == "Aerial")
+        if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false)
         {
             canvas.SetActive(true);
             Timer += Time.deltaTime;
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
             if (Timer >= AssemblyTimer)
             {
                 col.gameObject.GetComponent<AerialScript>().AssembleState = true;
+                canvas.SetActive(false);
             }
         }
     }
