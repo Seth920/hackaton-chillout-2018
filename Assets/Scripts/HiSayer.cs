@@ -7,6 +7,7 @@ public class HiSayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Debug.Log("Hi.");
+        Debug.Log("moja zmiana");
 	}
 	
 	// Update is called once per frame
