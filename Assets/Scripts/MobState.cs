@@ -6,6 +6,6 @@ public abstract class MobState: IState {
     protected Transform transform;
 
     protected abstract void OnEnter();
-    public abstract IState OnUpdate();
+    public abstract MobStates OnUpdate(MobData mobData);
     protected abstract void OnLeave();
 }
