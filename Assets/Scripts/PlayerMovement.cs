@@ -4,67 +4,70 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	
-    private bool cooldown = false;
-    public float cooldownTime = .5f;
-    
-    // Update is called once per frame
-    void ResetCooldown()
+    public float speed = 1;
+	public enum faceDirection { Up, Down, Left, Right}
+	public faceDirection currentDir = faceDirection.Up;
+
+    private void OnDrawGizmos()
     {
-        cooldown = false;
+        Gizmos.DrawCube(this.transform.position,new Vector3(1,1,1));
+    }
+    
+   
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Aerial")
+        {
+            col.gameObject.GetComponent<AerialScript>().AssembleState = true;
+
+        }
     }
 
+  
 
     void Update ()
-    {
-        if (Input.GetKey(KeyCode.A)) // left
-        {
-            if (cooldown == false)
-            {
-                transform.Translate(-1.0f, 0.0f, 0.0f);
-                Invoke("ResetCooldown", cooldownTime);
-                cooldown = true;
-            }
+	{
+		if (Input.GetKey(KeyCode.A)) // left
+		{
+
+            transform.position += Vector3.left * speed * Time.deltaTime;
+            currentDir = faceDirection.Left;
+           
+
+
+        }
+		if (Input.GetKey(KeyCode.D)) // right
+		{
+            transform.position += Vector3.right * speed * Time.deltaTime;
+            currentDir = faceDirection.Right;
+			
+			
+		}
+		if (Input.GetKey(KeyCode.W)) // forward
+		{
+            transform.position += Vector3.up * speed * Time.deltaTime;
+            currentDir = faceDirection.Up;
                 
         }
-        if (Input.GetKey(KeyCode.D)) // right
-        {
-            if (cooldown == false)
-            {
-                transform.Translate(1.0f, 0.0f, 0.0f);
-                Invoke("ResetCooldown", cooldownTime);
-                cooldown = true;
-            }
+			
+		
+		if (Input.GetKey(KeyCode.S)) // backward
+		{
+            transform.position += Vector3.down * speed * Time.deltaTime;
+            currentDir = faceDirection.Down;
+			
+			
+			
+		}
+		if (Input.GetKey(KeyCode.KeypadEnter)) // assemble
+		{
             
-        }
-        if (Input.GetKey(KeyCode.W)) // forward
-        {
-            if (cooldown == false)
-            {
-                transform.Translate(0.0f, 1.0f, 0.0f);
-                Invoke("ResetCooldown", cooldownTime);
-                cooldown = true;
-            }
             
-        }
-        if (Input.GetKey(KeyCode.S)) // backward
-        {
-            if (cooldown == false)
-            {
-                transform.Translate(0.0f, -1.0f, 0.0f);
-                Invoke("ResetCooldown", cooldownTime);
-                cooldown = true;
-            }
-            
-        }
-        if (Input.GetKey(KeyCode.KeypadEnter)) // assemble
-        {
-            // tutaj bedzie montowanie
-        }
-        if (Input.GetKey(KeyCode.Space)) // boost
-        {
-            // tutaj bedzie uzywanie boosta
-        }
+		}
+		if (Input.GetKey(KeyCode.Space)) // boost
+		{
+			// tutaj bedzie uzywanie boosta
+		}
 
-    }
+	}
 }
