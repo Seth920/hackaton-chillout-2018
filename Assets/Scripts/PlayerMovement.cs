@@ -21,9 +21,7 @@ public class PlayerMovement : MonoBehaviour {
             col.gameObject.GetComponent<AerialScript>().AssembleState = true;
 
         }
-    }
-
-  
+    }  
 
     void Update ()
 	{

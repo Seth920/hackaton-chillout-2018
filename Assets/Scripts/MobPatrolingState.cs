@@ -8,9 +8,10 @@ public class MobPatrolingState: MobState {
     private List<GameObject> waypoints;
     private int currentWaypoint = 0;
 
-    public MobPatrolingState(List<GameObject> waypoints, float speed) {
+    public MobPatrolingState(Transform transform, List<GameObject> waypoints, float speed, MobData mobData) {
         this.OnEnter();
         this.waypoints = waypoints;
+        this.transform = transform;
         this.speed = speed;
     }
 
@@ -18,14 +19,18 @@ public class MobPatrolingState: MobState {
         Debug.Log("Entering patrolling state");
     }
 
-    public override IState OnUpdate() {
+    public override MobStates OnUpdate(MobData mobData) {
+        if (mobData.isPlayerDetected) {
+            return MobStates.Follow;
+        }
+
         goToWaypoint();
 
         if (checkIfReachedWaypoint()) {
             setNextWaypoint();
         }
 
-        return this;
+        return MobStates.Patrol;
     }
 
     private void goToWaypoint() {
