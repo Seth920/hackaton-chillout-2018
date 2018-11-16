@@ -1,3 +1,3 @@
 ﻿public interface IState {
-    IState OnUpdate();
+    MobStates OnUpdate(MobData mobData);
 }
