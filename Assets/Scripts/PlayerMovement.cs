@@ -38,7 +38,9 @@ public class PlayerMovement : MonoBehaviour {
             
             if (Timer >= AssemblyTimer)
             {
-                col.gameObject.GetComponent<AerialScript>().AssembleState = true;
+                AerialScript aerial = col.gameObject.GetComponent<AerialScript>();
+                aerial.AssembleState = true;
+                aerial.SetAssembled();
                 canvas.SetActive(false);
             }
         }
