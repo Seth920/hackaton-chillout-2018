@@ -22,6 +22,8 @@ public class Mob: MonoBehaviour {
         this.animator = GetComponent<Animator>();
     }
 
+  
+
     void Update() {
         MobStates newState = mobState.OnUpdate(mobData);
         handleStateUpdate(newState);
@@ -60,7 +62,7 @@ public class Mob: MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
             animator.SetTrigger("attacked");
-            mobData.attacked = true;
+            mobData.attacked = true;        
         }
     }
 
