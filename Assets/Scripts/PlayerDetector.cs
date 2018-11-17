@@ -29,9 +29,11 @@ public class PlayerDetector: MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        mobScript.onPlayerDetected(collision.gameObject);
-        isDetected = true;
-        GetComponent<CircleCollider2D>().enabled = false;
+        if (collision.gameObject.tag == "Player") {
+            mobScript.onPlayerDetected(collision.gameObject);
+            isDetected = true;
+            GetComponent<CircleCollider2D>().enabled = false;
+        }        
     }
 
     private void OnDrawGizmos() {

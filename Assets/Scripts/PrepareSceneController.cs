@@ -60,5 +60,9 @@ public class PrepareSceneController: MonoBehaviour {
     // Update is called once per frame
     void Update() {
         frequencyImage.fillAmount = (Mathf.PerlinNoise(Time.deltaTime, Time.time) * 2) + 0.2f;
+
+        if (Input.GetKey(KeyCode.Escape)) {
+            SceneManager.LoadScene("Map");
+        }
     }
 }
