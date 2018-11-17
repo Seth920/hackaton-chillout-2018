@@ -90,10 +90,10 @@ TextureImporter:
       name: WalkingUpAndDown_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 64
-        height: 64
+        width: 57
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -101,7 +101,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40fefea675aabf044a831cf2fd66f51e
+      spriteID: a5f63fbab6607cc4bb3c6eee06cd0fa1
       vertices: []
       indices: 
       edges: []
@@ -110,10 +110,10 @@ TextureImporter:
       name: WalkingUpAndDown_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 69
+        y: 13
+        width: 57
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 754ec36e2ea0efa41aef71d6141d0203
+      spriteID: bec4160984e4b674e8ee409772346b25
       vertices: []
       indices: 
       edges: []
@@ -130,10 +130,10 @@ TextureImporter:
       name: WalkingUpAndDown_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 0
-        width: 64
-        height: 64
+        width: 57
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aacd3cde38529744caf9c0f5fe0372cc
+      spriteID: 4b3b6f2a377dfe54d966bf803aedc54f
       vertices: []
       indices: 
       edges: []
