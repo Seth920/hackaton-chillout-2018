@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Waypoint
   - Mob
+  - Aerial
+  - WinText
   layers:
   - Default
   - TransparentFX

@@ -23,12 +23,17 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start()
 	{
-	animator = GetComponent<Animator>();
+<<<<<<< HEAD
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerRb = GetComponent<Rigidbody2D>();
-	canvas.SetActive(false);
-	hintButton.SetActive(false);
+        canvas.SetActive(false);
 	}
+=======
+		canvas.SetActive(false);
+        hintButton.SetActive(false);
+    }
+>>>>>>> master
 
    
     private void OnTriggerStay2D(Collider2D col)
@@ -71,23 +76,64 @@ public class PlayerMovement : MonoBehaviour {
         hintButton.SetActive(false);
     }
 
+<<<<<<< HEAD
+	void Update ()
+	{
+        float xInput = Input.GetAxis("Horizontal");
+        float yInput = Input.GetAxis("Vertical");
+        animator.SetFloat("Speed", Mathf.Abs(xInput+yInput));
+        
+
+        if (Input.GetKey(KeyCode.A)) // left
+		{
+
+			 transform.position += Vector3.left * speed * Time.deltaTime;
+			currentDir = faceDirection.Left;
+            
+        }
+		if (Input.GetKey(KeyCode.D)) // right
+		{
+			transform.position += Vector3.right * speed * Time.deltaTime;
+			currentDir = faceDirection.Right;
+            
+
+
+        }
+		if (Input.GetKey(KeyCode.W)) // forward
+		{
+			transform.position += Vector3.up * speed * Time.deltaTime;
+			currentDir = faceDirection.Up;
+            
+
+        }
+			
+		
+		if (Input.GetKey(KeyCode.S)) // backward
+		{
+			transform.position += Vector3.down * speed * Time.deltaTime;
+			currentDir = faceDirection.Down;
+            
+
+        }
+		
+	}
+=======
     float GetAngle(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 
-	void Update ()
-	{float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
-        animator.SetFloat("Speed", Mathf.Abs(xInput+yInput));
+    void Update ()
+	{ 
         Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
         Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-    float angle = GetAngle(positionOnScreen, mouseOnScreen);
+
+        float angle = GetAngle(positionOnScreen, mouseOnScreen);
 
         Vector3 direction = new Vector3();
-		
+>>>>>>> master
 
-if (Input.GetKey(KeyCode.A)) // left
+        if (Input.GetKey(KeyCode.A)) // left
         {
 
             direction += Vector3.left * speed * Time.deltaTime;
@@ -122,6 +168,5 @@ if (Input.GetKey(KeyCode.A)) // left
         Debug.Log(direction.y);
         transform.position += direction;
     }    
-
 
 }
