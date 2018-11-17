@@ -10,7 +10,9 @@ public class PlayerMovement : MonoBehaviour {
 	public faceDirection currentDir = faceDirection.Up;
 	public float Timer = 0f;
 	public float AssemblyTimer = 3f;
-
+	Animator animator;
+	SpriteRenderer spriteRenderer;
+	Rigidbody2D playerRb;
 
 	[Header("UI")]
 	public Image Bar;
@@ -21,6 +23,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void Start()
 	{
+		animator = GetComponent<Animator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		playerRb = GetComponent<Rigidbody2D>();
 		canvas.SetActive(false);
 		hintButton.SetActive(false);
 	}
@@ -36,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 		
 		if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
 		{
+			animator.SetTrigger("E");
 			canvas.SetActive(true);
 			Timer += Time.deltaTime;
 			Bar.fillAmount = Timer / AssemblyTimer;
@@ -71,23 +77,26 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Update ()
-	{ 
+	{
+		//float xInput = Input.GetAxis("Horizontal");
+		//float yInput = Input.GetAxis("Vertical");
+		//animator.SetFloat("Speed", Mathf.Abs(xInput+yInput));
 		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
 		float angle = GetAngle(positionOnScreen, mouseOnScreen);
 
 		Vector3 direction = new Vector3();
+		
 
 		if (Input.GetKey(KeyCode.A)) // left
 		{
-
+			animator.SetBool("Moving",true);
 			direction += Vector3.left * speed * Time.deltaTime;
 			currentDir = faceDirection.Left;
 		}
 		if (Input.GetKey(KeyCode.D)) // right
 		{
-
+			animator.SetBool("Moving", true);
 			direction += Vector3.right * speed * Time.deltaTime;
 			currentDir = faceDirection.Right;
 
@@ -95,6 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (Input.GetKey(KeyCode.W)) // forward
 		{
+			animator.SetBool("Moving", true);
 			var rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
 			direction += rotation * Vector3.up * speed * Time.deltaTime;
 			currentDir = faceDirection.Up;
@@ -104,7 +114,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.S)) // backward
 		{
-
+			animator.SetBool("Moving", true);
 			direction += Vector3.down * speed * Time.deltaTime;
 			currentDir = faceDirection.Down;
 
@@ -113,6 +123,8 @@ public class PlayerMovement : MonoBehaviour {
 		direction.y = Mathf.Clamp(direction.y, -1 * speed * Time.deltaTime, 1 * speed * Time.deltaTime);
 		Debug.Log(direction.y);
 		transform.position += direction;
+		animator.SetBool("Moving", false);
 	}    
+
 
 }

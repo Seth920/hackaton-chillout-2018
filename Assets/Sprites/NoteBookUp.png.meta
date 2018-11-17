@@ -102,10 +102,10 @@ TextureImporter:
       name: NoteBookUp_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 8
-        width: 57
-        height: 55
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,7 +113,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebd8b8a8b70dac48880887f7b922866
+      spriteID: 23a644912a61ef348884515a7fa30380
       vertices: []
       indices: 
       edges: []
@@ -122,10 +122,10 @@ TextureImporter:
       name: NoteBookUp_1
       rect:
         serializedVersion: 2
-        x: 69
-        y: 18
-        width: 57
-        height: 31
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,7 +133,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8967e1d0d5b30684e8d1e01e699bfd28
+      spriteID: 2fcbd168a3ab9834b889e5e5cc952306
       vertices: []
       indices: 
       edges: []
@@ -142,10 +142,10 @@ TextureImporter:
       name: NoteBookUp_2
       rect:
         serializedVersion: 2
-        x: 133
-        y: 13
-        width: 57
-        height: 35
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,7 +153,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99e2813a06399414abe713657cf9708e
+      spriteID: 0da6b603aa3f01743bfc239d83bc4642
       vertices: []
       indices: 
       edges: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: NoteBookUp_3
       rect:
         serializedVersion: 2
-        x: 197
-        y: 13
-        width: 57
-        height: 35
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,7 +173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5d89553079b273449bc99a6a3b37024
+      spriteID: a8771ac2275a40842a51769f2e39dd93
       vertices: []
       indices: 
       edges: []
