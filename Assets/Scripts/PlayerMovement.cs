@@ -76,38 +76,43 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
         float angle = GetAngle(positionOnScreen, mouseOnScreen);
-        var rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
 
+        Vector3 direction = new Vector3();
 
         if (Input.GetKey(KeyCode.A)) // left
-		{
+        {
 
-			transform.position += Vector3.left * speed * Time.deltaTime;
-			currentDir = faceDirection.Left;
-		}
-		if (Input.GetKey(KeyCode.D)) // right
-		{
-			transform.position += Vector3.right * speed * Time.deltaTime;
-			currentDir = faceDirection.Right;
-			
-			
-		}
-		if (Input.GetKey(KeyCode.W)) // forward
-		{
-			transform.position += rotation * Vector3.up * speed * Time.deltaTime;
-			currentDir = faceDirection.Up;
-				
-		}
-			
-		
-		if (Input.GetKey(KeyCode.S)) // backward
-		{
-			transform.position += Vector3.down * speed * Time.deltaTime;
-			currentDir = faceDirection.Down;
-				
-		}
-       
+            direction += Vector3.left * speed * Time.deltaTime;
+            currentDir = faceDirection.Left;
+        }
+        if (Input.GetKey(KeyCode.D)) // right
+        {
 
+            direction += Vector3.right * speed * Time.deltaTime;
+            currentDir = faceDirection.Right;
+
+
+        }
+        if (Input.GetKey(KeyCode.W)) // forward
+        {
+            var rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
+            direction += rotation * Vector3.up * speed * Time.deltaTime;
+            currentDir = faceDirection.Up;
+
+        }
+
+
+        if (Input.GetKey(KeyCode.S)) // backward
+        {
+
+            direction += Vector3.down * speed * Time.deltaTime;
+            currentDir = faceDirection.Down;
+
+        }
+        direction.x = Mathf.Clamp(direction.x, -1 * speed * Time.deltaTime, 1 * speed * Time.deltaTime);
+        direction.y = Mathf.Clamp(direction.y, -1 * speed * Time.deltaTime, 1 * speed * Time.deltaTime);
+        Debug.Log(direction.y);
+        transform.position += direction;
     }    
 
 }
