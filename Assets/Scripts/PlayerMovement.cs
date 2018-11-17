@@ -22,21 +22,23 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
    
-	private void OnTriggerStay2D(Collider2D col)
-	{
-		
-		if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
-		{
-			canvas.SetActive(true);
-			Timer += Time.deltaTime;
-			Bar.fillAmount = Timer / AssemblyTimer;
-			
-			if (Timer >= AssemblyTimer)
-			{
-				col.gameObject.GetComponent<AerialScript>().AssembleState = true;
-				canvas.SetActive(false);
-			}
-		}
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        
+        if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
+        {
+            canvas.SetActive(true);
+            Timer += Time.deltaTime;
+            Bar.fillAmount = Timer / AssemblyTimer;
+            
+            if (Timer >= AssemblyTimer)
+            {
+                AerialScript aerial = col.gameObject.GetComponent<AerialScript>();
+                aerial.AssembleState = true;
+                aerial.SetAssembled();
+                canvas.SetActive(false);
+            }
+        }
 
 		if (Input.GetKeyUp(KeyCode.E))
 		{
