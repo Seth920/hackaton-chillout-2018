@@ -10,15 +10,20 @@ public class PlayerMovement : MonoBehaviour {
 	public faceDirection currentDir = faceDirection.Up;
 	public float Timer = 0f;
 	public float AssemblyTimer = 3f;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+    Rigidbody2D playerRb;
 
-
-	[Header("UI")]
+    [Header("UI")]
 	public Image Bar;
 	public GameObject canvas;
 
 	private void Start()
 	{
-		canvas.SetActive(false);
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerRb = GetComponent<Rigidbody2D>();
+        canvas.SetActive(false);
 	}
 
    
@@ -27,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
         
         if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
         {
+            animator.SetTrigger("E");
             canvas.SetActive(true);
             Timer += Time.deltaTime;
             Bar.fillAmount = Timer / AssemblyTimer;
@@ -55,35 +61,42 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update ()
 	{
-		
+        float xInput = Input.GetAxis("Horizontal");
+        float yInput = Input.GetAxis("Vertical");
+        animator.SetFloat("Speed", Mathf.Abs(xInput+yInput));
+        
 
-		if (Input.GetKey(KeyCode.A)) // left
+        if (Input.GetKey(KeyCode.A)) // left
 		{
 
-			transform.position += Vector3.left * speed * Time.deltaTime;
+			 transform.position += Vector3.left * speed * Time.deltaTime;
 			currentDir = faceDirection.Left;
-		}
+            
+        }
 		if (Input.GetKey(KeyCode.D)) // right
 		{
 			transform.position += Vector3.right * speed * Time.deltaTime;
 			currentDir = faceDirection.Right;
-			
-			
-		}
+            
+
+
+        }
 		if (Input.GetKey(KeyCode.W)) // forward
 		{
 			transform.position += Vector3.up * speed * Time.deltaTime;
 			currentDir = faceDirection.Up;
-				
-		}
+            
+
+        }
 			
 		
 		if (Input.GetKey(KeyCode.S)) // backward
 		{
 			transform.position += Vector3.down * speed * Time.deltaTime;
 			currentDir = faceDirection.Down;
-				
-		}
+            
+
+        }
 		
 	}
 
