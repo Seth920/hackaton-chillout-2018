@@ -72,9 +72,10 @@ GameObject:
   - component: {fileID: 212264758279976162}
   - component: {fileID: 61706432485660050}
   - component: {fileID: 114908051345116956}
+  - component: {fileID: 95865813433513666}
   m_Layer: 0
   m_Name: Mob
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695215737157958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: 1.44, z: 0}
+  m_LocalPosition: {x: -270.2, y: -193.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667132610385204}
@@ -253,8 +254,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1, y: 1.1}
   m_EdgeRadius: 0
+--- !u!95 &95865813433513666
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695215737157958}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eacd5b8b11655d4fa5d26dd84e9ada4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114266973937418320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b592078c418a64540a6fd920dd751a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 3
+  animator: {fileID: 0}
   waypointsParent: {fileID: 1310170713220026}
 --- !u!212 &212264758279976162
 SpriteRenderer:

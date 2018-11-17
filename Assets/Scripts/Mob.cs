@@ -7,6 +7,7 @@ public enum MobStates { Patrol, Follow };
 public class Mob: MonoBehaviour {
 
     public float speed;
+    public Animator animator;
     private bool isPlayerDetected = false;
     public GameObject waypointsParent;
     MobData mobData = new MobData();
@@ -16,6 +17,7 @@ public class Mob: MonoBehaviour {
     void Awake() {
         var waypoints = this.getWaypoints();
         this.mobState = new MobPatrolingState(transform, waypoints, speed, mobData);
+        this.animator = GetComponent<Animator>();
     }
 
     void Update() {
@@ -53,6 +55,13 @@ public class Mob: MonoBehaviour {
         mobData.player = player;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            animator.SetTrigger("attacked");
+            mobData.attacked = true;
+        }
+    }
+
     private void OnDrawGizmos() {
         Gizmos.DrawCube(this.transform.position, new Vector3(1, 1, 1));
     }
@@ -77,4 +86,5 @@ public class Mob: MonoBehaviour {
 public class MobData {
     public bool isPlayerDetected = false;
     public GameObject player;
+    public bool attacked = false;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MobFollowingState: MobState {
 
     float playerFollowTime = 2f;
+    float timeSinceHit = 0f;
 
     public MobFollowingState(MobData mobData, Transform transform) {
         mobData.isPlayerDetected = false;
@@ -19,11 +20,20 @@ public class MobFollowingState: MobState {
     public override MobStates OnUpdate(MobData mobData) {
         playerFollowTime -= Time.deltaTime;
 
-        if (playerFollowTime < 0f) {
+        if (mobData.attacked) {
+            timeSinceHit += Time.deltaTime;
+        }
+
+        if (playerFollowTime < 0f || timeSinceHit > 2f) {
+            mobData.attacked = false;
+            timeSinceHit = 0f;
             return MobStates.Patrol;
         }
 
-        goToPlayer(mobData.player);
+        if (!mobData.attacked) {
+            goToPlayer(mobData.player);
+        }
+        
 
         return MobStates.Follow;
     }

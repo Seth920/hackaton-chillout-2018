@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement: MonoBehaviour {
 
+    public PlayerLookMouse plm;
     public float speed = 1;
     public enum faceDirection { Up, Down, Left, Right }
     public faceDirection currentDir = faceDirection.Up;
     public float Timer = 0f;
     public float AssemblyTimer = 3f;
+    public bool isDead = false;
     public Animator animator;
     SpriteRenderer spriteRenderer;
     Rigidbody2D playerRb;
@@ -57,10 +60,25 @@ public class PlayerMovement: MonoBehaviour {
         }
     }
 
+    IEnumerator onDead() {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Map");
+
+    }
+
     private void OnTriggerExit2D(Collider2D collision) {
         Timer = 0;
         canvas.SetActive(false);
         hintButton.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Mob") {
+            animator.SetBool("isDead", true);
+            isDead = true;
+            StartCoroutine(onDead());
+            plm.enabled = false;
+        }
     }
 
     float GetAngle(Vector3 a, Vector3 b) {
@@ -68,6 +86,9 @@ public class PlayerMovement: MonoBehaviour {
     }
 
     void Update() {
+        if (isDead) {
+            return;
+        }
         if (Input.GetKeyUp(KeyCode.E)) {
             animator.SetBool("isHacking", false);
         }
