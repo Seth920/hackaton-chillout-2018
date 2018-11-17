@@ -15,15 +15,24 @@ public class PlayerMovement : MonoBehaviour {
 	[Header("UI")]
 	public Image Bar;
 	public GameObject canvas;
+    public GameObject hintButton;
 
-	private void Start()
+   
+
+    private void Start()
 	{
 		canvas.SetActive(false);
-	}
+        hintButton.SetActive(false);
+    }
 
    
     private void OnTriggerStay2D(Collider2D col)
     {
+        if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false)
+        {
+            hintButton.SetActive(true);
+
+        }
         
         if (col.gameObject.tag == "Aerial" && col.gameObject.GetComponent<AerialScript>().AssembleState == false && Input.GetKey(KeyCode.E))
         {
@@ -37,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
                 aerial.AssembleState = true;
                 aerial.SetAssembled();
                 canvas.SetActive(false);
+                hintButton.SetActive(false);
             }
         }
 
@@ -44,20 +54,32 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			Timer = 0;
 			canvas.SetActive(false);
-		}
+            
+        }
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		Timer = 0;
 		canvas.SetActive(false);
-	}
+        hintButton.SetActive(false);
+    }
 
-	void Update ()
-	{
-		
+    float GetAngle(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    }
 
-		if (Input.GetKey(KeyCode.A)) // left
+    void Update ()
+	{ 
+        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
+        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+        float angle = GetAngle(positionOnScreen, mouseOnScreen);
+        var rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
+
+
+        if (Input.GetKey(KeyCode.A)) // left
 		{
 
 			transform.position += Vector3.left * speed * Time.deltaTime;
@@ -72,7 +94,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (Input.GetKey(KeyCode.W)) // forward
 		{
-			transform.position += Vector3.up * speed * Time.deltaTime;
+			transform.position += rotation * Vector3.up * speed * Time.deltaTime;
 			currentDir = faceDirection.Up;
 				
 		}
@@ -84,9 +106,8 @@ public class PlayerMovement : MonoBehaviour {
 			currentDir = faceDirection.Down;
 				
 		}
-		
-	}
+       
 
-	
+    }    
 
 }
