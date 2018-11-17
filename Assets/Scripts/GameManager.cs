@@ -12,6 +12,7 @@ public class GameManager: Singleton<GameManager> {
 
     private void Awake() {
         Debug.Log("Manager awake");
+        Events.Instance.aerialAssembled_Event += onAerialAssembled;
     }
 
     // Use this for initialization
@@ -22,5 +23,9 @@ public class GameManager: Singleton<GameManager> {
     // Update is called once per frame
     void Update() {
 
+    }
+
+    private void onAerialAssembled(GameObject aerial) {
+        Debug.Log("Event lanczed");
     }
 }
