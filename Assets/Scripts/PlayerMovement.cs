@@ -77,39 +77,6 @@ public class PlayerMovement : MonoBehaviour {
 
         float angle = GetAngle(positionOnScreen, mouseOnScreen);
 
-        /*
-
-        if (Input.GetKey(KeyCode.A)) // left
-		{
-           
-            transform.position += Vector3.left * speed * Time.deltaTime;
-			currentDir = faceDirection.Left;
-		}
-		if (Input.GetKey(KeyCode.D)) // right
-		{
-            
-            transform.position += Vector3.right * speed * Time.deltaTime;
-			currentDir = faceDirection.Right;
-			
-			
-		}
-		if (Input.GetKey(KeyCode.W)) // forward
-		{
-            var rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
-            transform.position += rotation * Vector3.up * speed * Time.deltaTime;
-			currentDir = faceDirection.Up;
-				
-		}
-			
-		
-		if (Input.GetKey(KeyCode.S)) // backward
-		{
-            
-            transform.position += Vector3.down * speed * Time.deltaTime;
-			currentDir = faceDirection.Down;
-				
-		}
-        */
         Vector3 direction = new Vector3();
 
         if (Input.GetKey(KeyCode.A)) // left
