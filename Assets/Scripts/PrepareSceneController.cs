@@ -47,9 +47,9 @@ public class PrepareSceneController: MonoBehaviour {
 
     private float showTextWithAudio(int index) {
         texts[index].SetActive(true);
-        audioSource.clip = clips[0];
+        audioSource.clip = clips[index];
         audioSource.Play();
-        return clips[0].length;
+        return clips[index].length;
     }
 
     private void hideCurrentText() {

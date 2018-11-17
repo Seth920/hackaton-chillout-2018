@@ -752,7 +752,14 @@ MonoBehaviour:
   - {fileID: 1914582437}
   - {fileID: 1751548158}
   clips:
-  - {fileID: 8300000, guid: 242a21bfc4ca44a4e87649dbd0aba888, type: 3}
+  - {fileID: 8300000, guid: 2a498614f4e645f4db58d09f8ca7eb21, type: 3}
+  - {fileID: 8300000, guid: 2bc4b81fcada272428d5d04b5c3f071b, type: 3}
+  - {fileID: 8300000, guid: 4bd6ee8dbe96135428211d67a160e7e4, type: 3}
+  - {fileID: 8300000, guid: fb1f000d9a4ff154aa2855903aa15574, type: 3}
+  - {fileID: 8300000, guid: 5dc72b4e39b301e46a7a8df2f8507c5f, type: 3}
+  - {fileID: 8300000, guid: 06005aab71ef4494bbd49cefd27b00dc, type: 3}
+  - {fileID: 8300000, guid: 309daf16d50d9644ea56506d7f6e9a8f, type: 3}
+  - {fileID: 8300000, guid: 4f50fa7896c042b41b0f31419c1c6580, type: 3}
   audioSource: {fileID: 1173721653}
 --- !u!82 &1173721653
 AudioSource:
