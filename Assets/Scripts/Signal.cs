@@ -17,7 +17,7 @@ public class Signal: MonoBehaviour {
         GetComponent<Image>().sprite = signalImages[signalStage];
         StartCoroutine(Fade());
 
-        if (signalStage == 4) {
+        if (signalStage == 3) {
             Events.Instance.allAerialsAssembled_Event.Invoke();
         }
     }

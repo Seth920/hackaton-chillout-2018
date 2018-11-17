@@ -7,6 +7,8 @@ public enum MobStates { Patrol, Follow };
 public class Mob: MonoBehaviour {
 
     public float speed;
+    public AudioSource audioS;
+    public List<AudioClip> clips;
     public Animator animator;
     private bool isPlayerDetected = false;
     public GameObject waypointsParent;
@@ -40,7 +42,7 @@ public class Mob: MonoBehaviour {
                 this.mobState = new MobPatrolingState(transform, this.getWaypoints(), speed, mobData);
                 break;
             case MobStates.Follow:
-                this.mobState = new MobFollowingState(mobData, transform);
+                this.mobState = new MobFollowingState(mobData, transform, audioS, clips);
                 break;
             default:
                 break;
